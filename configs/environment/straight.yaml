@@ -1,0 +1,8 @@
+# @package _global_
+
+environment:
+  id: Gym-Grid/Gridworld-Straight-20-v0
+
+experiment:
+  training_steps: 30000
+  testing_episodes: 1

@@ -1,0 +1,13 @@
+# @package _global_
+# @package hydra.sweeper
+_target_: hydra._internal.core_plugins.basic_sweeper.BasicSweeper
+max_batch_size: null
+params:
+  environment: river_swim, medium_distract, quicksand_distract, small_loop, two_room_quicksand, two_room_distract_middle, straight, corridor
+  monitor: binary_stateless, n, level, battery, button
+  +monitor.observability: 0.8
+  experiment.datadir: data_noisy_observability
+  experiment.hide_progress_bar: True
+  experiment.rng_seed: range(0, 10)
+  agent: optimistic_init #, pessimistic_init
+  algorithm: q_visit, intrinsic, greedy, eps_greedy, ucb

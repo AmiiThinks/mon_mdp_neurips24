@@ -1,0 +1,17 @@
+# @package _global_
+
+environment:
+  id: Gym-Grid/Gridworld-TwoRoom-Quicksand-3x5-v0
+
+experiment:
+  training_steps: 10000
+  testing_episodes: 100
+
+agent:
+  critic:
+    lr:
+      init_value: 0.5
+      min_value: 0.5
+    lr_visit:
+      init_value: 0.5
+      min_value: 0.5

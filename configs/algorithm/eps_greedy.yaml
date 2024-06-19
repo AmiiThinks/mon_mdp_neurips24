@@ -1,0 +1,15 @@
+# @package _global_
+algorithm:
+  id: eps_greedy
+
+agent:
+  critic:
+    id: QTableCritic
+    q0_visit_min: null
+    q0_visit_max: null
+
+  actor:
+    beta_bar: null
+    eps:
+      init_value: 1.0
+      min_value: 0.0

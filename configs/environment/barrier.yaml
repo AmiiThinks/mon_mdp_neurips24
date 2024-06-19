@@ -1,0 +1,8 @@
+# @package _global_
+
+environment:
+  id: Gym-Grid/Gridworld-Barrier-5x5-v0
+
+experiment:
+  training_steps: 100000
+  testing_episodes: 1

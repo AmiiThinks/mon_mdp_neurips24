@@ -1,0 +1,14 @@
+gymnasium[box2d]~=0.28.1
+box2d-py
+pprintpp
+wandb
+numpy
+tqdm
+submitit
+hydra-core
+hydra-joblib-launcher
+hydra-submitit-launcher
+pickle
+matplotlib
+seaborn
+gitpython

@@ -1,0 +1,8 @@
+# @package _global_
+
+environment:
+  id: Gym-Grid/Gridworld-Corridor-3x4-v0
+
+experiment:
+  training_steps: 10000
+  testing_episodes: 1

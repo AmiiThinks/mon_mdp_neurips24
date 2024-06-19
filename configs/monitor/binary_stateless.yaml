@@ -1,0 +1,4 @@
+# @package _global_
+
+monitor:
+  id: StatelessBinaryMonitor

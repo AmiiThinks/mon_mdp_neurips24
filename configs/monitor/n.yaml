@@ -1,0 +1,8 @@
+# @package _global_
+
+monitor:
+  id: NMonitor
+  n_monitors: 4
+
+experiment:
+  testing_episodes: 100

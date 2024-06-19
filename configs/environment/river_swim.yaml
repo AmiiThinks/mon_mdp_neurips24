@@ -1,0 +1,17 @@
+# @package _global_
+
+environment:
+  id: Gym-Grid/RiverSwim-6-v0
+
+experiment:
+  training_steps: 20000
+  testing_episodes: 100
+
+agent:
+  critic:
+    lr:
+      init_value: 0.5
+      min_value: 0.05
+    lr_visit:
+      init_value: 0.5
+      min_value: 0.05

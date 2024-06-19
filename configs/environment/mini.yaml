@@ -1,0 +1,8 @@
+# @package _global_
+
+environment:
+  id: Gym-Grid/Gridworld-Empty-2x2-v0
+
+experiment:
+  training_steps: 1000
+  testing_episodes: 1

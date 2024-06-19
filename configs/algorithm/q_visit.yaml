@@ -1,0 +1,16 @@
+# @package _global_
+algorithm:
+  id: q_visit
+
+agent:
+  critic:
+    id: QTableCriticWithVisitQ
+    q0_min: -10.0
+    q0_max: -10.0
+
+  actor:
+    id: EpsilonGreedyWithVisitQ
+    beta_bar: 0.01
+    eps:
+      init_value: 1.0
+      min_value: 0.0

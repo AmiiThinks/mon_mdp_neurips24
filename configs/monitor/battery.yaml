@@ -1,0 +1,5 @@
+# @package _global_
+
+monitor:
+  id: BatteryMonitor
+  max_battery: 10

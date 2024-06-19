@@ -1,0 +1,35 @@
+defaults:
+  - agent: default
+  - environment: quicksand_distract
+  - monitor: n
+  - algorithm: q_visit
+  - _self_
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+environment:
+  render_mode: null
+
+wandb:
+  mode: disabled
+  entity: ualberta-bowling
+  project: explore_benchmark
+
+experiment:
+  testing_points: 1000
+  datadir: null
+  debugdir: null
+  rng_seed: 1
+  hide_progress_bar: False
+
+# This will prevent the creation of the 'output' and 'multirun' subfolders,
+# but 'multirun.yaml' will still be created as currently there is no way to prevent that.
+hydra:
+  output_subdir: null
+  run:
+    dir: .
+    # dir: /scratch/${oc.env:USER}/outputs/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    # dir: /scratch/${oc.env:USER}/multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    dir: .
+    subdir: .

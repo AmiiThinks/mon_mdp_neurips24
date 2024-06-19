@@ -1,0 +1,8 @@
+# @package _global_
+
+monitor:
+  id: LevelMonitor
+  n_levels: 3
+
+experiment:
+  testing_episodes: 100

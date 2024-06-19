@@ -1,0 +1,8 @@
+# @package _global_
+
+environment:
+  id: Gym-Grid/Gridworld-Empty-Loop-3x3-v0
+
+experiment:
+  training_steps: 5000
+  testing_episodes: 1

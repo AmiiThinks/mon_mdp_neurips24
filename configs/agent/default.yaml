@@ -1,0 +1,38 @@
+critic:
+  id: QTableCritic
+  q0_min: -10.0
+  q0_max: -10.0
+  q0_visit_min: 0.0
+  q0_visit_max: 0.0
+  r0_min: -0.1
+  r0_max: 0.1
+  gamma: 0.99
+  gamma_visit: 0.99
+
+  lr:
+    id: LinearDecay
+    init_value: 1.0
+    min_value: 1.0
+    decay: null
+    steps: ${experiment.training_steps}
+    warmup: 0
+
+  lr_visit:
+    id: LinearDecay
+    init_value: 1.0
+    min_value: 1.0
+    decay: null
+    steps: ${experiment.training_steps}
+    warmup: 0
+
+actor:
+  id: EpsilonGreedy
+  beta_bar: null
+
+  eps:
+    id: LinearDecay
+    init_value: 1.0
+    min_value: 0.0
+    decay: null
+    steps: ${experiment.training_steps}
+    warmup: 0
