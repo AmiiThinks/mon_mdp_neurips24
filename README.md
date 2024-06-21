@@ -1,3 +1,5 @@
+Source code of the paper [Beyond Optimism: Exploration With Partially Observable Rewards](https://arxiv.org/abs/2406.13909).
+
 ## Install and Examples
 
 To install and use our environments, run
