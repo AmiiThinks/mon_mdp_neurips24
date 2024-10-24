@@ -1,7 +1,7 @@
 # @package _global_
 
 environment:
-  id: Gym-Grid/Gridworld-Empty-10x10-v0
+  id: Gym-Gridworlds/Empty-10x10-v0
 
 experiment:
   training_steps: 100000

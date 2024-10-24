@@ -5,30 +5,30 @@ Source code of the paper [Beyond Optimism: Exploration With Partially Observable
 To install and use our environments, run
 ```
 pip install -r requirements.txt
-cd src/gym-grid
+cd src/gym_gridworlds
 pip install -e .
 ```
 
 Run `python` and then
 ```python
 import gymnasium
-env = gymnasium.make("Gym-Grid/Gridworld-Penalty-3x3-v0", render_mode="human")
+env = gymnasium.make("Gym-Gridworld/Penalty-3x3-v0", render_mode="human")
 env.reset()
 env.step(1) # DOWN
 env.step(4) # STAY
 env.render()
 ```
 
-to render the `Gridworld-Penalty-3x3-v0` (left figure), and
+to render the `Penalty-3x3-v0` (left figure), and
 ```python
 import gymnasium
-env = gymnasium.make("Gym-Grid/Gridworld-Full-5x5-v0", render_mode="human")
+env = gymnasium.make("Gym-Gridworld/Full-5x5-v0", render_mode="human")
 env.reset()
 env.step(1) # DOWN
 env.render()
 ```
 
-to render the `Gridworld-Full-5x5-v0` (right figure).
+to render the `Full-5x5-v0` (right figure).
 
 <p align="center">
   <img src="figures/gridworld_penalty_3x3.png" height=200 alt="Gridworld Penalty"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -48,7 +48,7 @@ It is also possible to add noise to the transition and the reward functions.
 For example, the following environment
 ```python
 import gymnasium
-env = gymnasium.make("Gym-Grid/Gridworld-Full-5x5-v0", random_action_prob=0.1, reward_noise_std=0.05)
+env = gymnasium.make("Gym-Gridworld/Full-5x5-v0", random_action_prob=0.1, reward_noise_std=0.05)
 ```
 - Performs a random action with 10% probability (regardless of what the agent wants to do),
 - Adds Gaussian noise with 0.05 standard deviation to the reward.

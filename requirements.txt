@@ -1,4 +1,4 @@
-gymnasium[box2d]~=0.28.1
+gymnasium[box2d]>=1.0.1
 box2d-py
 pprintpp
 wandb

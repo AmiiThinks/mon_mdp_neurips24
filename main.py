@@ -1,4 +1,5 @@
 import gymnasium
+import gym_gridworlds
 import wandb
 import hydra
 from omegaconf import DictConfig, OmegaConf, open_dict
@@ -55,7 +56,7 @@ def run(cfg: DictConfig) -> None:
         **cfg.wandb,
     )
 
-    if cfg.environment.id in ["Gym-Grid/Gridworld-TwoRoom-Distract-Middle-2x11-v0"]:
+    if cfg.environment.id in ["Gym-Gridworld/TwoRoom-Distract-Middle-2x11-v0"]:
         if cfg.monitor.id in ["ButtonMonitor"]:
             with open_dict(cfg):
                 cfg.monitor.button_cell_id = 16
