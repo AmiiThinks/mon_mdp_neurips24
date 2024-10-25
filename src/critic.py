@@ -157,6 +157,77 @@ class QTableCriticWithVisitReward(QTableCritic):
         )  # fmt: skip
 
 
+class QTableCriticWithCountQ(QTableCritic):
+    """
+    This critic learns Q-counts (Q-functions based on the visit counts).
+    In the code, they are called Q-visit.
+    """
+
+    def __init__(
+        self,
+        n_obs_env: int, n_obs_mon: int,
+        n_act_env: int, n_act_mon: int,
+        q0_visit_min: float, q0_visit_max: float,
+        gamma_visit: float,
+        lr_visit: DictConfig,
+        **kwargs,
+    ):  # fmt: skip
+        QTableCritic.__init__(self, n_obs_env, n_obs_mon, n_act_env, n_act_mon, **kwargs)
+        self.lr_visit = getattr(parameter, lr_visit.id)(**lr_visit)
+        self.gamma_visit = gamma_visit
+        self.q_visit = MSETable(
+            *self.obs_shape,
+            *self.act_shape,
+            init_value_min=q0_visit_min,
+            init_value_max=q0_visit_max,
+        )
+        self.q_visit_target = self.q_visit
+        QTableCriticWithCountQ.reset(self)
+
+    def reset(self):
+        self.q_visit.reset()
+        self.q_visit_target.reset()
+        QCritic.reset(self)
+
+    def update(
+        self,
+        obs_env, obs_mon,
+        act_env, act_mon,
+        rwd_proxy, rwd_mon,
+        term,
+        next_obs_env, next_obs_mon,
+    ):  # fmt: skip
+        q_visit_next = self.q_visit_target(next_obs_env, next_obs_mon)
+
+        n = self.visit_count(obs_env, obs_mon, act_env, act_mon)
+        rwd_intrinsic = 1.0 / np.sqrt(n)
+        rwd_coeff = 1.0 - self.gamma_visit
+        rwd_visit = rwd_coeff * rwd_intrinsic
+        rwd_visit = n
+        rwd_visit[term] /= (1.0 - self.gamma_visit)
+        target = td_target(
+            rwd_visit,
+            term,
+            q_visit_next.max((-2, -1)),
+            self.gamma_visit,
+        )
+        error = self.q_visit.update(
+            obs_env, obs_mon,
+            act_env, act_mon,
+            target=target,
+            stepsize=self.lr_visit.value,
+        )  # fmt: skip
+        self.lr_visit.step()
+
+        return error.mean(-1) + QCritic.update(self,
+            obs_env, obs_mon,
+            act_env, act_mon,
+            rwd_proxy, rwd_mon,
+            term,
+            next_obs_env, next_obs_mon,
+        )  # fmt: skip
+
+
 class QTableCriticWithVisitQ(QTableCritic):
     """
     This critic learns S-functions (Q-functions based on the successor representation).

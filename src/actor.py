@@ -112,6 +112,21 @@ class EpsilonGreedyWithUCB(EpsilonGreedy):
             return greedy(self._critic.q(obs_env, obs_mon) + ucb, rng_generator)
 
 
+class EpsilonGreedyWithUCBQCount(EpsilonGreedy):
+    """
+    Actor with UCB exploration, but the U component is given by a separate Q-function.
+    """
+
+    def explore(self, obs_env, obs_mon, rng_generator):
+        if rng_generator.random() < self._eps.value:
+            return tuple(rng_generator.integers(self._critic.act_shape))
+        else:
+            n = (1.0 - self._critic.gamma_visit) * self._critic.q_visit(obs_env, obs_mon)
+            ucb = np.sqrt(2.0 * np.log(n.sum()) / n)
+            ucb[np.isnan(ucb)] = np.inf
+            return greedy(self._critic.q(obs_env, obs_mon) + ucb, rng_generator)
+
+
 class EpsilonGreedyWithVisitQ(EpsilonGreedy):
     """
     Actor for Q-visit critics.
