@@ -12,6 +12,7 @@ pip install -e .
 Run `python` and then
 ```python
 import gymnasium
+import gym_gridworlds
 env = gymnasium.make("Gym-Gridworld/Penalty-3x3-v0", render_mode="human")
 env.reset()
 env.step(1) # DOWN
@@ -22,6 +23,7 @@ env.render()
 to render the `Penalty-3x3-v0` (left figure), and
 ```python
 import gymnasium
+import gym_gridworlds
 env = gymnasium.make("Gym-Gridworld/Full-5x5-v0", render_mode="human")
 env.reset()
 env.step(1) # DOWN
@@ -48,6 +50,7 @@ It is also possible to add noise to the transition and the reward functions.
 For example, the following environment
 ```python
 import gymnasium
+import gym_gridworlds
 env = gymnasium.make("Gym-Gridworld/Full-5x5-v0", random_action_prob=0.1, reward_noise_std=0.05)
 ```
 - Performs a random action with 10% probability (regardless of what the agent wants to do),
