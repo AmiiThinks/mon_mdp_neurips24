@@ -1,7 +1,7 @@
 # @package _global_
 
 environment:
-  id: Gym-Gridworlds/Corridor-3x4-v0
+  id: gym_gridworlds:Gym-Gridworlds/Corridor-3x4-v0
 
 experiment:
   training_steps: 10000

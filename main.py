@@ -22,7 +22,7 @@ def run(cfg: DictConfig) -> None:
 
     group = dict_to_id(cfg.environment) + "/" + dict_to_id(cfg.monitor)
     sha = git.Repo(search_parent_directories=True).head.object.hexsha
-    base_folder = os.path.join(sha, group)
+    base_folder = os.path.join(sha, group).replace("gym_gridworlds:", "")
     run_id = "_".join(
         [
             str(cfg.algorithm.id),
@@ -56,13 +56,13 @@ def run(cfg: DictConfig) -> None:
         **cfg.wandb,
     )
 
-    if cfg.environment.id in ["Gym-Gridworlds/TwoRoom-Distract-Middle-2x11-v0"]:
+    if cfg.environment.id in ["gym_gridworlds:Gym-Gridworlds/TwoRoom-Distract-Middle-2x11-v0"]:
         if cfg.monitor.id in ["ButtonMonitor"]:
             with open_dict(cfg):
                 cfg.monitor.button_cell_id = 16
 
     # Fix max Q for infinite horizon MDPs
-    if cfg.environment.id in ["Gym-Gridworlds/RiverSwim-6-v0"]:
+    if cfg.environment.id in ["gym_gridworlds:Gym-Gridworlds/RiverSwim-6-v0"]:
         if cfg.agent.critic.q0_max == 1.0:  # optimistic
             cfg.agent.critic.q0_max = 50.0
         if cfg.agent.critic.q0_min == 1.0:
