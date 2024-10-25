@@ -62,7 +62,7 @@ def run(cfg: DictConfig) -> None:
                 cfg.monitor.button_cell_id = 16
 
     # Fix max Q for infinite horizon MDPs
-    if cfg.environment.id in ["RiverSwim"]:
+    if cfg.environment.id in ["Gym-Gridworlds/RiverSwim-6-v0"]:
         if cfg.agent.critic.q0_max == 1.0:  # optimistic
             cfg.agent.critic.q0_max = 50.0
         if cfg.agent.critic.q0_min == 1.0:
