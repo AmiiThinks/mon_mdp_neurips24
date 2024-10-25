@@ -56,7 +56,7 @@ def run(cfg: DictConfig) -> None:
         **cfg.wandb,
     )
 
-    if cfg.environment.id in ["Gym-Gridworld/TwoRoom-Distract-Middle-2x11-v0"]:
+    if cfg.environment.id in ["Gym-Gridworlds/TwoRoom-Distract-Middle-2x11-v0"]:
         if cfg.monitor.id in ["ButtonMonitor"]:
             with open_dict(cfg):
                 cfg.monitor.button_cell_id = 16
