@@ -5,6 +5,8 @@ algorithm:
 agent:
   critic:
     id: QTableCriticWithCountQ
+    q0_visit_min: 0.0  # override optimistic/pessimistic init (this is the sum of counts, so must be init to 0)
+    q0_visit_max: 0.0
 
   actor:
     id: EpsilonGreedyWithUCBQCount
