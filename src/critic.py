@@ -161,6 +161,8 @@ class QTableCriticWithCountQ(QTableCritic):
     """
     This critic learns Q-counts (Q-functions based on the visit counts).
     In the code, they are called Q-visit.
+    Proposed by Parisi et al., "Long-Term Visitation Value for Deep Exploration
+    in Sparse Reward Reinforcement Learning" (2022)
     """
 
     def __init__(
@@ -200,9 +202,6 @@ class QTableCriticWithCountQ(QTableCritic):
         q_visit_next = self.q_visit_target(next_obs_env, next_obs_mon)
 
         n = self.visit_count(obs_env, obs_mon, act_env, act_mon)
-        rwd_intrinsic = 1.0 / np.sqrt(n)
-        rwd_coeff = 1.0 - self.gamma_visit
-        rwd_visit = rwd_coeff * rwd_intrinsic
         rwd_visit = n
         rwd_visit[term] /= (1.0 - self.gamma_visit)
         target = td_target(

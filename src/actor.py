@@ -115,6 +115,8 @@ class EpsilonGreedyWithUCB(EpsilonGreedy):
 class EpsilonGreedyWithUCBQCount(EpsilonGreedy):
     """
     Actor with UCB exploration, but the U component is given by a separate Q-function.
+    Proposed by Parisi et al., "Long-Term Visitation Value for Deep Exploration
+    in Sparse Reward Reinforcement Learning" (2022)
     """
 
     def explore(self, obs_env, obs_mon, rng_generator):
