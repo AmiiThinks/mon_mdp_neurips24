@@ -207,7 +207,7 @@ class QTableCriticWithCountQ(QTableCritic):
         target = td_target(
             rwd_visit,
             term,
-            q_visit_next.max((-2, -1)),
+            q_visit_next.min((-2, -1)),
             self.gamma_visit,
         )
         error = self.q_visit.update(
