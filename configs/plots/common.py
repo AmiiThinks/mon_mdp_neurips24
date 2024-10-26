@@ -13,6 +13,7 @@ benchmarks = [  # alg, q0_min, q0_max, q0_visit_min, q0_visit_max, eps_init, eps
     ["greedy", 1.0, 1.0, None, None, 0.0, 0.0, None, f"Optimism"],
     ["ucb", 1.0, 1.0, None, None, 1.0, 0.0, None, f"UCB"],
     ["intrinsic", 1.0, 1.0, None, None, 1.0, 0.0, None, f"Intrinsic"],
+    ["q_count", 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, None, f"Intrinsic"],
     ["eps_greedy", 1.0, 1.0, None, None, 1.0, 0.0, None, f"Naive"],
 ]
 
@@ -21,11 +22,14 @@ alg_to_label = {
     "greedy": "Optimism",
     "ucb": "UCB",
     "intrinsic": "Intrinsic",
+    "q_count": "Q-Counts",
     "eps_greedy": "Naive",
 }
 
 colors = sns.color_palette("colorblind")[:len(alg_to_label)-1]
 colors.insert(1, "k")
+order = [0, 1, 2, 3, 5, 4]
+colors = [colors[i] for i in order]
 alg_to_color = {
     k: colors[i] for i, k in enumerate(alg_to_label.keys())
 }

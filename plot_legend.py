@@ -34,6 +34,7 @@ labels = [
     "UCB",
     "Intrinsic Reward",
     "Naive",
+    "Q-Counts",
 ]
 colors = sns.color_palette("colorblind")[: len(labels) - 1]
 colors.insert(1, "k")
@@ -48,15 +49,17 @@ for lab, c in zip(labels, colors):
     legend_handles.extend(handles)
     legend_labels.extend(labels)
 
-# Remove duplicate legends
-unique_legend = [
+legend_entries = [
     (h, l)
     for i, (h, l) in enumerate(zip(legend_handles, legend_labels))  # noqa: E741
-    if l not in legend_labels[:i]
+    if l not in legend_labels[:i] # Remove duplicate legends
 ]
 
+order = [0, 1, 2, 3, 5, 4]
+legend_entries = [legend_entries[i] for i in order]
+
 leg = figl.legend(
-    *zip(*unique_legend),
+    *zip(*legend_entries),
     handler_map={matplotlib.lines.Line2D: SymHandler()},
     handleheight=2.4,
     labelspacing=0.05,
@@ -69,31 +72,32 @@ leg = figl.legend(
     columnspacing=1.2,
 )
 
-
-legend_handles = []
-legend_labels = []
-axs[1].plot(1, 1, label="Straight Line: Optimistic Initialization", lw=3, ls="-", c="k", alpha=0.5)
-axs[1].plot(1, 1, label="Dashed Line: Pessimistic Initialization", lw=3, ls="--", c="k", alpha=0.5)
-handles, labels = axs[1].get_legend_handles_labels()
-legend_handles.extend(handles)
-legend_labels.extend(labels)
-
-leg = figl.legend(
-    handles,
-    labels,
-    handler_map={matplotlib.lines.Line2D: SymHandler()},
-    handleheight=2.4,
-    labelspacing=0.05,
-    handletextpad=0.6,
-    handlelength=0,
-    prop={"size": font_size - 4},
-    # loc='upper left', bbox_to_anchor=(1, 1.5), # right, outside
-    loc="center",
-    bbox_to_anchor=(0.485, -0.56),  # below, outside
-    ncol=len(labels),
-    columnspacing=1.2,
-)
+# legend_handles = []
+# legend_labels = []
+# axs[1].plot(1, 1, label="Straight Line: Optimistic Initialization", lw=3, ls="-", c="k", alpha=0.5)
+# axs[1].plot(1, 1, label="Dashed Line: Pessimistic Initialization", lw=3, ls="--", c="k", alpha=0.5)
+# handles, labels = axs[1].get_legend_handles_labels()
+# legend_handles.extend(handles)
+# legend_labels.extend(labels)
+#
+# leg = figl.legend(
+#     handles,
+#     labels,
+#     handler_map={matplotlib.lines.Line2D: SymHandler()},
+#     handleheight=2.4,
+#     labelspacing=0.05,
+#     handletextpad=0.6,
+#     handlelength=0,
+#     prop={"size": font_size - 4},
+#     # loc='upper left', bbox_to_anchor=(1, 1.5), # right, outside
+#     loc="center",
+#     bbox_to_anchor=(0.485, -0.56),  # below, outside
+#     ncol=len(labels),
+#     columnspacing=1.2,
+# )
 
 plt.draw()
 
 plt.savefig("legend.png", bbox_inches="tight", pad_inches=0, dpi=1500)
+
+print(colors)
