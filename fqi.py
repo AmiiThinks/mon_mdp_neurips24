@@ -1,4 +1,5 @@
 import gymnasium
+import gym_gridworlds
 import hydra
 from omegaconf import DictConfig
 import os
@@ -22,10 +23,10 @@ def run(cfg: DictConfig) -> None:
 
     group = dict_to_id(cfg.environment) + "/" + dict_to_id(cfg.monitor)
     sha = git.Repo(search_parent_directories=True).head.object.hexsha
-    base_folder = os.path.join(sha, group)
+    base_folder = os.path.join(sha, group).replace("gym_gridworlds:", "")
 
     # Fix max Q for infinite horizon MDPs
-    if cfg.environment.id in ["RiverSwim"]:
+    if cfg.environment.id in ["gym_gridworlds:Gym-Gridworlds/RiverSwim-6-v0"]:
         if cfg.agent.critic.q0_max == 1.0:  # optimistic
             cfg.agent.critic.q0_max = 50.0
         if cfg.agent.critic.q0_min == 1.0:
