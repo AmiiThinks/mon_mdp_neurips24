@@ -7,7 +7,7 @@ import os
 from src.plot_utils import highlight_cell
 
 plt.rcParams["font.family"] = "Bree Serif"
-plt.rcParams["font.size"] = 16
+plt.rcParams["font.size"] = 14
 
 
 def plot_agent(actor, critic, savepath=""):
