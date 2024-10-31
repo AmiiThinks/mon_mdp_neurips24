@@ -147,7 +147,7 @@ class QTableCriticWithVisitReward(QTableCritic):
     ):  # fmt: skip
         n = self.visit_count(obs_env, obs_mon, act_env, act_mon)
         rwd_intrinsic = 1.0 / np.sqrt(n)
-        rwd_coeff = 1.0 - self.gamma_visit
+        rwd_coeff = 1.0 - self.gamma
         return QCritic.update(self,
             obs_env, obs_mon,
             act_env, act_mon,
