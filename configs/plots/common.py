@@ -27,7 +27,7 @@ alg_to_label = {
 }
 
 colors = sns.color_palette("colorblind")[:len(alg_to_label)-1]
-colors.insert(1, "k")
+colors.insert(1, (0.0, 0.0, 0.0))
 order = [0, 1, 2, 3, 5, 4]
 colors = [colors[i] for i in order]
 alg_to_color = {
