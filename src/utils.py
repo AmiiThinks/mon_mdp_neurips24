@@ -2,7 +2,7 @@ import numpy as np
 import random
 
 
-def random_argmax(x, rng_generator=np.random):
+def random_argmax(x, rng_generator=np.random.Generator):
     """
     Simple random tiebreak for np.argmax() for when there are multiple max values.
     """
@@ -12,7 +12,7 @@ def random_argmax(x, rng_generator=np.random):
     return tuple(best[i])
 
 
-def random_argmin(x, rng_generator=np.random):
+def random_argmin(x, rng_generator=np.random.Generator):
     """
     Simple random tiebreak for np.argmin() for when there are multiple min values.
     """

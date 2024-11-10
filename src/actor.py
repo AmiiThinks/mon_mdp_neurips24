@@ -12,7 +12,7 @@ def greedy(x, rng_generator):
     return tuple(random_argmax(x, rng_generator))
 
 
-def softmax(x: np.array, eps: float, rng_generator):
+def softmax(x: np.ndarray, eps: float, rng_generator: np.random.Generator):
     x_exp = np.exp((x - x.max()) / max(eps, 1e-12))
     p = x_exp / x_exp.sum()
     shp = p.shape

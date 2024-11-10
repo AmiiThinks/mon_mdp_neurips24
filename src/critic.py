@@ -6,14 +6,14 @@ import src.parameter as parameter
 from src.approximator import MSETable, CountTable, RunningMeanTable
 
 
-def td_target(rwd: np.array, term: np.array, q_next: np.array, gamma: float):
+def td_target(rwd: np.ndarray, term: np.ndarray, q_next: np.ndarray, gamma: float):
     """
     Temporal-difference Q-Learning target. Vectorized.
 
     Args:
-        rwd (np.array): r_t,
-        term (np.array): True if s_t is terminal, False otherwise,
-        q_next (np.array): max_a Q(s_{t+1}, a),
+        rwd (np.ndarray): r_t,
+        term (np.ndarray): True if s_t is terminal, False otherwise,
+        q_next (np.ndarray): max_a Q(s_{t+1}, a),
         gammma (float): discount factor,
     """
 
