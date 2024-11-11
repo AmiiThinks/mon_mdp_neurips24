@@ -1,4 +1,6 @@
-Source code of the paper [Beyond Optimism: Exploration With Partially Observable Rewards](https://arxiv.org/abs/2406.13909).
+Source code of the paper "__*Beyond Optimism: Exploration With Partially Observable Rewards*__"
+([Arxiv](https://arxiv.org/abs/2406.13909), 
+[NeurIPS](https://neurips.cc/virtual/2024/poster/93919)).
 
 ## Install and Examples
 
